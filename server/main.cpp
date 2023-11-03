@@ -53,9 +53,9 @@ int runTCPServer(TCPServer& server) {
     server.accept();
     printf("\033[32mClient connected\033[0m\n\n");
 
-    char buffer[MAXSIZE] = {0};
-
     while (true) {
+        char buffer[MAXSIZE] = {0};
+        
         server.read(buffer, MAXSIZE);
         printf("Client: %s\n", buffer);
 
@@ -78,9 +78,8 @@ int runTCPServer(TCPServer& server) {
 }
 
 int runUDPServer(UDPServer& server) {
-    char buffer[MAXSIZE] = {0};
-
     while (true) {
+        char buffer[MAXSIZE] = {0};
         server.read(buffer, MAXSIZE);
         printf("Client: %s\n", buffer);
 

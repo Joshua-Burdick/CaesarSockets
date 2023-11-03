@@ -16,8 +16,8 @@ int main(int argc, char* argv[]) {
     }
 
     char* protocol = argv[1];
-    const char* target = argc > 2 ? argv[3] : "127.0.0.1";
-    int port = argc > 3 ? atoi(argv[2]) : PORT;
+    int port = argc > 2 ? atoi(argv[2]) : PORT;
+    const char* target = argc > 3 ? argv[3] : "127.0.0.1";
 
     if (strcmp(protocol, "tcp") == 0) {
         TCPClient client(port);
@@ -40,10 +40,10 @@ int main(int argc, char* argv[]) {
 }
 
 void runTCPClient(TCPClient& client) {
-    std::string buffer;
-    char response[MAXSIZE];
-
     while (true) {
+        std::string buffer = "";
+        char response[MAXSIZE] = {0};
+
         printf("Enter message: ");
         std::cin.clear();
         std::getline(std::cin, buffer);
@@ -66,10 +66,10 @@ void runTCPClient(TCPClient& client) {
 }
 
 void runUDPClient(UDPClient& client) {
-    std::string buffer;
-    char response[MAXSIZE];
-
     while (true) {
+        std::string buffer = "";
+        char response[MAXSIZE];
+
         printf("Enter message: ");
         std::cin.clear();
         std::getline(std::cin, buffer);
